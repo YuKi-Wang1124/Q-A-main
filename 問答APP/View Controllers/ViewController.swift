@@ -18,11 +18,7 @@ class ViewController: UIViewController {
     
     
     var questions = Question.data
-    var index = 0 {
-        willSet {
-            changeContents()
-        }
-    }
+    var index = 0
     
     var score = 0
     
@@ -31,7 +27,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         // 每次打開 APP 會更改題目順序
         questions.shuffle()
-        index = 0
+        changeContents()
         
         
     }
@@ -64,11 +60,12 @@ class ViewController: UIViewController {
     }
     
     func restart() {
-            score = 0
-            index = 0
-            questionNumberLabel.text = "\(index + 1) / 10"
-            scoreLabel.text = "0"
-            questions.shuffle()
+        score = 0
+        index = 0
+        questionNumberLabel.text = "\(index + 1) / 10"
+        scoreLabel.text = "0"
+        questions.shuffle()
+        changeContents()
         }
 
     @IBAction func restartButtonAction(_ sender: Any) {
